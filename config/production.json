@@ -1,0 +1,16 @@
+{
+  "database": {
+    "host": "localhost",
+    "db": "JD",
+    "username": "root",
+    "password": ""
+  },
+  "auth": {
+    "username": "fmorante",
+    "password": "fmorante"
+  },
+  "logger": {
+    "file": "prod.log",
+    "mode": "DEBUG"
+  }
+}
