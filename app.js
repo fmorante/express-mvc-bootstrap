@@ -1,7 +1,8 @@
 var express = require("express"),
     auth = require('http-auth'),
     config = require("config"),
-    log4js = require("log4js");
+    log4js = require("log4js"),
+    bodyParser = require('body-parser');
 
 // requires logger module
 var app = express();
@@ -26,10 +27,13 @@ logger.setLevel(config.get('logger.mode'));
 
 //log every request & response
 app.use(function (req, res, next) {
-    logger.debug(req);
-    logger.debug(res);
+    //logger.debug(req);
+    //logger.debug(res);
     next();
 });
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // posts
 var posts = require('./routes/posts.js');

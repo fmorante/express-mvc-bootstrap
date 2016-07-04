@@ -14,7 +14,7 @@ exports.findById = function(req, res) {
         if (err)
             res.send ({error: true, message: err});
         else
-            res.send ({error: false, message: "success", posts: rows});
+            res.send ({error: false, message: "success", post: rows});
     });
 };
 
