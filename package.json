@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "test": "jasmine-node --verbose spec/",
-    "start": "node app.js"
+    "start": "node app.js",
+    "doc": "apidoc -i routes/ -o doc/"
   },
   "repository": {
     "type": "git",

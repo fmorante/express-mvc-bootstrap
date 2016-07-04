@@ -1,10 +1,15 @@
-var mysql      = require('mysql');
+var mysql = require('mysql'),
+    config = require('config');
+
 var connection = mysql.createConnection({
-    host     : 'localhost',
-    database : 'JD',
-    user     : 'root',
-    password : ''
+    host: config.get('database.host'),
+    database: config.get('database.db'),
+    user: config.get('database.username'),
+    password: config.get('database.password'),
+    connectionLimit: 50,
+    queueLimit: 0
 });
+
 
 exports.findAll = function(limit, offset, callback) {
     connection.query('SELECT * FROM category LIMIT ? OFFSET ?', [parseInt(limit), parseInt(offset)], function(err, rows, fields){
@@ -25,7 +30,7 @@ exports.create = function(slug, name, callback) {
 };
 
 exports.update = function(id, slug, name, callback) {
-    connection.query('UPDATE category SET slug=?, name=? WHERE id=?', [slug, name, id], function(err, rows, fields){
+    connection.query('UPDATE category SET slug=?, name=?, updated_at=NOW() WHERE id=?', [slug, name, id], function(err, rows, fields){
         callback (err, rows);
     });
 };

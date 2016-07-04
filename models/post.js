@@ -5,7 +5,9 @@ var connection = mysql.createConnection({
     host: config.get('database.host'),
     database: config.get('database.db'),
     user: config.get('database.username'),
-    password: config.get('database.password')
+    password: config.get('database.password'),
+    connectionLimit: 50,
+    queueLimit: 0
 });
 
 exports.findAll = function(limit, offset, callback) {

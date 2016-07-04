@@ -63,6 +63,7 @@ frisby.create('GET categories - GET single category - POST category - PUT catego
             })
             .afterJSON (function (response) {
                 // test PUT /categories/:id
+                console.log(response.id);
                 frisby.create('PUT categories')
                     .put(URL + '/categories/' + response.id, {
                         slug: "slug-test-jasmine-update",
