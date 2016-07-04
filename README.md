@@ -19,3 +19,9 @@ A MVC boilerplate for Express.js
 - common pool for every DB connection
 - global logfile & localizaton
 - server control error
+
+## Running & scripts
+1. ```npm install``` -- install node modules & dependencies
+2. ```npm start``` -- start server
+3. ```npm run test``` -- run jasmine / frisby test
+4. ```npm run doc``` -- output docs into doc directory

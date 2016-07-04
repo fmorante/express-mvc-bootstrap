@@ -1,5 +1,5 @@
 {
-  "name": "stackJs-poc",
+  "name": "express-mvc-bootstrap",
   "version": "0.0.1",
   "scripts": {
     "test": "jasmine-node --verbose spec/",
