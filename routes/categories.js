@@ -1,5 +1,10 @@
 var categories = require('../models/category.js');
 
+var codes = {
+    "OK": 200,
+    "KO": 400};
+
+
 /**
  * @api {get} /categories List all categories
  * @apiVersion 1.0.0
@@ -36,9 +41,11 @@ var categories = require('../models/category.js');
 exports.findAll = function(req, res) {
     categories.findAll(req.query.limit, req.query.offset, function (err, rows){
         if (err)
-            res.send ({error: true, message: err});
+            res.status(400)
+                .send ({error: true, message: err});
         else
-            res.send ({error: false, message: "success", categories: rows});
+            res.status(200)
+                .send ({error: false, message: "success", categories: rows});
     });
 };
 
@@ -71,9 +78,11 @@ exports.findAll = function(req, res) {
 exports.findById = function(req, res) {
     categories.findById(req.params.id, function (err, row){
         if (err)
-            res.send ({error: true, message: err});
+            res.status(404)
+                .send ({error: true, message: err});
         else
-            res.send ({error: false, message: "success", category: row});
+            res.status(200)
+                .send ({error: false, message: "success", category: rows});
     });
 };
 
@@ -97,9 +106,12 @@ exports.findById = function(req, res) {
 exports.create = function(req, res) {
     categories.create(req.body.slug, req.body.name, function (err, rows){
         if (err)
-            res.send ({error: true, message: err});
+            res.status(400)
+                .send ({error: true, message: err});
         else
-            res.send ({error: false, message: "success", id: rows.insertId});
+            res.status(codes.OK)
+                .location('category/' + rows.insertId)
+                .send ({error: false, message: "success", id: rows.insertId});
     });
 };
 
