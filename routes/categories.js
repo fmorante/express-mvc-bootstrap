@@ -1,4 +1,4 @@
-var categories = require('../models/categories.js');
+var categories = require('../models/category.js');
 
 /**
  * @api {get} /categories List all categories

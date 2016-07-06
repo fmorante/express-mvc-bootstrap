@@ -1,4 +1,4 @@
-var users = require('../models/users.js');
+var users = require('../models/user.js');
 
 /**
  * @api {post} /users Create user
