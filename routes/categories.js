@@ -99,7 +99,7 @@ exports.create = function(req, res) {
         if (err)
             res.send ({error: true, message: err});
         else
-            res.send ({error: false, message: "success", id: rows.insertId});
+            res.send ({error: false, message: "success", id: rows});
     });
 };
 
@@ -122,11 +122,11 @@ exports.create = function(req, res) {
    * }
  */
 exports.update = function(req, res) {
-    categories.update(req.params.id, req.body.slug, req.body.name, function (err, rows){
+    categories.update(req.params.id, req.body.slug, req.body.name, function (err){
         if (err)
             res.send ({error: true, message: err});
         else
-            res.send ({error: false, message: "success", affectedRows: rows.affectedRows, changedRows: rows.changedRows});
+            res.send ({error: false, message: "success"});
     });
 };
 

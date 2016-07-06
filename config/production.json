@@ -3,7 +3,8 @@
     "host": "localhost",
     "db": "JD",
     "username": "root",
-    "password": ""
+    "password": "",
+    "dialect": "mysql"
   },
   "auth": {
     "username": "fmorante",

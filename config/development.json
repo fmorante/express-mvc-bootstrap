@@ -3,7 +3,11 @@
     "host": "localhost",
     "db": "JD",
     "username": "root",
-    "password": ""
+    "password": "",
+    "dialect": "mysql",
+    "debug": true,
+    "connectionLimit": 100,
+    "port": 3306
   },
   "auth": {
     "username": "fmorante",
