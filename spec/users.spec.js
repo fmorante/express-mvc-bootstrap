@@ -9,22 +9,15 @@ frisby.globalSetup({ // globalSetup is for ALL requests
   }
 });
 
-// test if server is running
-frisby.create('Server running')
-    .get(URL + '/posts')
-    .expectStatus(200)
-    .toss();
-
 frisby.create('POST user')
     .post(URL + '/users' ,
     {"name": "test-user", "surname": "test-surname", "birth": "01/15/1977", "email": "test@email.com", "city": "test-city", "country": 2,
         "bar": "test-bar", "address": "test-address", "phone": "test-phone", "capacity": 100, "message": "test-message", "type": "contact", "postId": 22})
-    .expectStatus(200)
+    .expectStatus(201)
     .expectHeaderContains('content-type', 'application/json')
     .expectJSONTypes({
         error: Boolean,
-        message: String,
-        id: Number
+        message: String
     })
     .expectJSON({
         error: false,
