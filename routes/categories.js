@@ -24,6 +24,7 @@ var codes = {
 * @apiSuccess (204) {String} message "not_found"
 * @apiSuccess (204) {Array} categories []
 * @apiSuccessExample (200) Success-Response:
+* HTTP/1.1 200 OK
 * {
 *   "error": false,
 *   "message": "success",
@@ -45,11 +46,7 @@ var codes = {
 *   ]
 * }
 * @apiSuccessExample (204) Success-Response:
-* {
-*   "error": false,
-*   "message": "not_found",
-*   "categories": []
-* }
+* HTTP/1.1 204 No Content
 */
 exports.findAll = function(req, res) {
     categories.findAll(req.query.limit, req.query.offset, function (err, rows){
@@ -81,6 +78,7 @@ exports.findAll = function(req, res) {
 * @apiSuccess (200) {String} message "success"
 * @apiSuccess (200) {Array} category categories array
 * @apiSuccessExample (200) Success-Response:
+* HTTP/1.1 200 OK
 * {
 *   "error": false,
 *   "message": "success",
@@ -94,15 +92,8 @@ exports.findAll = function(req, res) {
 *       }
 *   ]
 * }
-* @apiSuccess (204) {Boolean} error false
-* @apiSuccess (204) {String} message "not_found"
-* @apiSuccess (204) {Array} category []
 * @apiSuccessExample (204) Success-Response:
-* {
-*   "error": false,
-*   "message": "not_found",
-*   "category": []
-* }
+* HTTP/1.1 204 No Content
 */
 exports.findById = function(req, res) {
     categories.findById(req.params.id, function (err, rows){
@@ -119,7 +110,7 @@ exports.findById = function(req, res) {
         else
             res.type('json')
                 .status(codes['NOT_FOUND_HTTP_CODE'])
-                .send ({error: false, message: 'not_found', category: rows})
+                .send ()
     });
 };
 
@@ -135,6 +126,7 @@ exports.findById = function(req, res) {
 * @apiSuccess (200) {String} message "success"
 * @apiSuccess (200) {HEADER} location of new category
 * @apiSuccessExample (200) Success-Response:
+* HTTP/1.1 200 OK
 * Header-Location: {HOST}/categories/2
 * {
 *   "error": false,
@@ -166,19 +158,14 @@ exports.create = function(req, res) {
 * @apiSuccess (200) {Boolean} error false
 * @apiSuccess (200) {String} message "success"
 * @apiSuccessExample (200) Success-Response:
+* HTTP/1.1 200 OK
 * Header-Location: {HOST}/categories/2
 * {
 *   "error": false,
 *   "message": "success"
 * }
-* @apiSuccess (204) {Boolean} error false
-* @apiSuccess (204) {String} message "not_found"
-* @apiSuccess (204) {Array} categories []
 * @apiSuccessExample (204) Success-Response:
-* {
-*   "error": false,
-*   "message": "not_found"
-* }
+* HTTP/1.1 204 No Content
 */
 exports.update = function(req, res) {
     categories.update(req.params.id, req.body.slug, req.body.name, function (err, rows){
@@ -195,7 +182,7 @@ exports.update = function(req, res) {
             else
                 res.type('json')
                     .status(codes['NOT_FOUND_HTTP_CODE'])
-                    .send ({error: false, message: "not_found"});
+                    .send();
     });
 };
 
@@ -208,17 +195,13 @@ exports.update = function(req, res) {
 * @apiSuccess (200) {Boolean} error false
 * @apiSuccess (200) {String} message "success"
 * @apiSuccessExample (200) Success-Response:
+* HTTP/1.1 200 OK
 * {
 *   "error": false,
 *   "message": "success"
 * }
-* @apiSuccess (204) {Boolean} error false
-* @apiSuccess (204) {String} message "not_found"
 * @apiSuccessExample (204) Success-Response:
-* {
-*   "error": false,
-*   "message": "not_found"
-* }
+* HTTP/1.1 204 No Content
 */
 exports.delete = function(req, res) {
     categories.delete(req.params.id, function (err, rows){
@@ -234,6 +217,6 @@ exports.delete = function(req, res) {
         else
             res.type('json')
                 .status(codes['NOT_FOUND_HTTP_CODE'])
-                .send ({error: false, message: "not_found"});
+                .send();
     });
 };

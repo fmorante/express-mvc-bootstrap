@@ -31,6 +31,7 @@ var codes = {
 * @apiSuccess (201) {Boolean} error false
 * @apiSuccess (201) {String} message "success"
 * @apiSuccessExample (201) Success-Response:
+* HTTP/1.1 200 OK
 * Header-Location: {HOST}/users/2
 * {
 *   "error": false,
