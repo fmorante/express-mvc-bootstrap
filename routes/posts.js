@@ -74,17 +74,21 @@ var codes = {
 * HTTP/1.1 204 No Content
 */
 exports.findAll = function(req, res) {
+    var response = [];
     post.findAll(req.query.limit, req.query.offset, function (err, rows){
         if (err)
-            res.status(codes['GENERIC_ERR'])
-                .json({error: true, message: err});
+            res.type('json')
+                .status(codes['GENERIC_ERR'])
+                .send ({error: true, message: err});
         else
             if (rows.length > 0)
-                res.status(codes['SUCCESSFULL_GENERIC_HTTP_CODE'])
-                    .json({error: false, message: "success", posts: rows});
+                res.type('json')
+                    .status(codes['SUCCESSFULL_GENERIC_HTTP_CODE'])
+                    .send({error: false, message: "success", posts: rows});
             else
-                res.status(codes['NOT_FOUND_HTTP_CODE'])
-                    .json();
+                res.type('json')
+                    .status(codes['NOT_FOUND_HTTP_CODE'])
+                    .send();
         });
 };
 
