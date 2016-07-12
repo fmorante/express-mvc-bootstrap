@@ -28,6 +28,11 @@ var codes = {
 * @apiParam {Number} postId related postId
 * @apiError (400) {Boolean} error true
 * @apiError (400) {String} message Error message
+* @apiErrorExample (400) Bad Request:
+* {
+*   "error": true,
+*   "message": "ECONNREFUSED"
+* }
 * @apiSuccess (201) {Boolean} error false
 * @apiSuccess (201) {String} message "success"
 * @apiSuccessExample (201) Success-Response:
@@ -43,7 +48,7 @@ exports.create = function(req, res) {
         if (err)
             res.type('json')
                 .status(codes['GENERIC_ERR'])
-                .send ({error: true, message: err});
+                .send ({error: true, message: err.code});
         else
             res.type('json')
                 .status(codes['CREATED_HTTP_CODE'])

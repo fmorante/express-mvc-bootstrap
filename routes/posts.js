@@ -17,6 +17,11 @@ var codes = {
 * @apiParam offset offset
 * @apiError (400) {Boolean} error true
 * @apiError (400) {String} message Error message
+* @apiErrorExample (400) Bad Request:
+* {
+*   "error": true,
+*   "message": "ECONNREFUSED"
+* }
 * @apiSuccess (200) {Boolean} error false
 * @apiSuccess (200) {String} message "success"
 * @apiSuccess (200) {Array} posts posts array
@@ -70,7 +75,7 @@ var codes = {
 *       }
 *   ]
 * }
-* @apiSuccessExample (204) Success-Response:
+* @apiSuccessExample (204) No content:
 * HTTP/1.1 204 No Content
 */
 exports.findAll = function(req, res) {
@@ -79,7 +84,7 @@ exports.findAll = function(req, res) {
         if (err)
             res.type('json')
                 .status(codes['GENERIC_ERR'])
-                .send ({error: true, message: err});
+                .send ({error: true, message: err.code});
         else
             if (rows.length > 0)
                 res.type('json')
@@ -93,11 +98,16 @@ exports.findAll = function(req, res) {
 };
 
 /**
-* @api {get} /posts/:id list singe post
+* @api {get} /posts/:id List singe post
 * @apiVersion 1.0.0
 * @apiGroup Posts
 * @apiError (400) {Boolean} error true
 * @apiError (400) {String} message Error message
+* @apiErrorExample (400) Bad Request:
+* {
+*   "error": true,
+*   "message": "ECONNREFUSED"
+* }
 * @apiSuccess (200) {Boolean} error false
 * @apiSuccess (200) {String} message "success"
 * @apiSuccess (200) {Array} posts posts array
@@ -130,7 +140,7 @@ exports.findAll = function(req, res) {
 *       }
 *   ]
 * }
-* @apiSuccessExample (204) Success-Response:
+* @apiSuccessExample (204) No content:
 * HTTP/1.1 204 No Content
 */
 exports.findById = function(req, res) {
@@ -138,7 +148,7 @@ exports.findById = function(req, res) {
         if (err)
             res.type('json')
                 .status(codes['GENERIC_ERR'])
-                .send ({error: true, message: err});
+                .send ({error: true, message: err.code});
         else
             if (rows.length > 0)
                 res.type('json')
@@ -162,6 +172,11 @@ exports.findById = function(req, res) {
 * @apiParam offset offset
 * @apiError (400) {Boolean} error true
 * @apiError (400) {String} message Error message
+* @apiErrorExample (400) Bad Request:
+* {
+*   "error": true,
+*   "message": "ECONNREFUSED"
+* }
 * @apiSuccess (200) {Boolean} error false
 * @apiSuccess (200) {String} message "success"
 * @apiSuccess (200) {Array} medias medias array
@@ -195,7 +210,7 @@ exports.findById = function(req, res) {
 *       }
 *   ]
 * }
-* @apiSuccessExample (204) Success-Response:
+* @apiSuccessExample (204) No content:
 * HTTP/1.1 204 No Content
 */
 
@@ -204,7 +219,7 @@ exports.findMedias = function(req, res) {
         if (err)
             res.type('json')
                 .status(codes['GENERIC_ERR'])
-                .send ({error: true, message: err});
+                .send ({error: true, message: err.code});
         else
             if (rows.length > 0)
                 res.type('json')
@@ -225,6 +240,11 @@ exports.findMedias = function(req, res) {
 * @apiParam offset offset
 * @apiError (400) {Boolean} error true
 * @apiError (400) {String} message Error message
+* @apiErrorExample (400) Bad Request:
+* {
+*   "error": true,
+*   "message": "ECONNREFUSED"
+* }
 * @apiSuccess (200) {Boolean} error false
 * @apiSuccess (200) {String} message "success"
 * @apiSuccess (200) {Array} categories categories array
@@ -250,7 +270,7 @@ exports.findMedias = function(req, res) {
 *       }
 *   ]
 * }
-* @apiSuccessExample (204) Success-Response:
+* @apiSuccessExample (204) No Content:
 * HTTP/1.1 204 No Content
 */
 exports.findCategories = function(req, res) {
@@ -258,7 +278,7 @@ exports.findCategories = function(req, res) {
         if (err)
             res.type('json')
                 .status(codes['GENERIC_ERR'])
-                .send ({error: true, message: err});
+                .send ({error: true, message: err.code});
         else
             if (rows.length > 0)
                 res.type('json')
@@ -279,9 +299,20 @@ exports.findCategories = function(req, res) {
 * @apiParam offset offset
 * @apiError (400) {Boolean} error true
 * @apiError (400) {String} message Error message
+* @apiErrorExample (400) Bad Request:
+* {
+*   "error": true,
+*   "message": "ECONNREFUSED"
+* }
+* @apiErrorExample (400) Bad Request:
+* {
+*   "error": true,
+*   "message": "ECONNREFUSED"
+* }
 * @apiSuccess (200) {Boolean} error false
 * @apiSuccess (200) {String} message "success"
 * @apiSuccess (200) {Array} tags tags array
+* @apiSuccessExample (200) Success-Response:
 * HTTP/1.1 200 OK
 * {
 *   "error": false,
@@ -301,7 +332,7 @@ exports.findCategories = function(req, res) {
 *       }
 *   ]
 * }
-* @apiSuccessExample (204) Success-Response:
+* @apiSuccessExample (204) No content:
 * HTTP/1.1 204 No Content
 */
 exports.findTags = function(req, res) {
@@ -309,7 +340,7 @@ exports.findTags = function(req, res) {
         if (err)
             res.type('json')
                 .status(codes['GENERIC_ERR'])
-                .send ({error: true, message: err});
+                .send ({error: true, message: err.code});
         else
             if (rows.length > 0)
                 res.type('json')
@@ -329,6 +360,11 @@ exports.findTags = function(req, res) {
 * @apiGroup Posts
 * @apiError (400) {Boolean} error true
 * @apiError (400) {String} message Error message
+* @apiErrorExample (400) Bad Request:
+* {
+*   "error": true,
+*   "message": "ECONNREFUSED"
+* }
 * @apiSuccess (200) {Boolean} error false
 * @apiSuccess (200) {String} message "success"
 * @apiSuccess (200) {Array} posts posts array
@@ -362,15 +398,15 @@ exports.findTags = function(req, res) {
 *       }
 *   ]
 * }
- * @apiSuccessExample (204) Success-Response:
- * HTTP/1.1 204 No Content
- */
+* @apiSuccessExample (204) No content:
+* HTTP/1.1 204 No Content
+*/
 exports.findBySlug = function(req, res) {
     post.findBySlug(req.params.slug, function (err, rows){
         if (err)
             res.type('json')
                 .status(codes['GENERIC_ERR'])
-                .send ({error: true, message: err});
+                .send ({error: true, message: err.code});
         else
         if (rows.length > 0)
             res.type('json')
