@@ -1,7 +1,7 @@
 var frisby = require('frisby');
 var URL = 'http://localhost:3000';
 var item = 0;
-var query = '/?limit=1&offset=0';
+var query = '?limit=1&offset=0';
 
 frisby.globalSetup({ // globalSetup is for ALL requests 
   request: {
@@ -9,13 +9,7 @@ frisby.globalSetup({ // globalSetup is for ALL requests
   }
 });
 
-// test if server is running
-frisby.create('Server running')
-    .get(URL + '/posts')
-    .expectStatus(200)
-    .toss();
-
-frisby.create('GET posts - GET single post - GET post related categories - GET post related media - GET post related tags')
+frisby.create('GET posts - GET single post - GET post related categories - GET post related media - GET post related tags - GET post from slug')
     .get(URL + '/posts' + query)
     .expectStatus(200)
     .expectHeaderContains('content-type', 'application/json')
@@ -75,14 +69,14 @@ frisby.create('GET posts - GET single post - GET post related categories - GET p
         })
         .toss();
 
-    frisby.create('GET post related tags')
-        .get(URL + '/posts/' + item + '/tags' + query)
+    frisby.create('GET post from slug')
+        .get(URL + '/posts/slug/sobrejackdaniels')
         .expectStatus(200)
         .expectHeaderContains('content-type', 'application/json')
         .expectJSONTypes({
             error: Boolean,
             message: String,
-            tags: Array
+            post: Array
         })
         .expectJSON({
             error: false,

@@ -41,4 +41,9 @@ exports.delete = function(id, callback) {
     });
 };
 
+exports.findPostsBySlug = function(slug, limit, offset, callback) {
+    connection.query('SELECT p.* FROM post p, post_has_category h, category c WHERE p.id = h.post_id AND c.id = h.category_id AND c.slug = ? LIMIT ? OFFSET ?', [slug, parseInt(limit), parseInt(offset)], function(err, rows, fields){
+        callback (err, rows);
+    });
+};
 

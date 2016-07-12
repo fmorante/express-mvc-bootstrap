@@ -45,6 +45,7 @@ app.get('/posts/:id', posts.findById);
 app.get('/posts/:id/medias', posts.findMedias);
 app.get('/posts/:id/categories', posts.findCategories);
 app.get('/posts/:id/tags', posts.findTags);
+app.get('/posts/slug/:slug', posts.findBySlug);
 
 // categories
 var categories = require('./routes/categories.js');
@@ -53,6 +54,7 @@ app.get('/categories/:id', categories.findById);
 app.post('/categories', categories.create);
 app.put('/categories/:id', categories.update);
 app.delete('/categories/:id', categories.delete);
+app.get('/categories/:slug/posts', categories.findPostsBySlug);
 
 // users
 var users = require('./routes/users.js');

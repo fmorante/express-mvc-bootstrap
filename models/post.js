@@ -40,4 +40,10 @@ exports.findTags = function(id, limit, offset, callback) {
     });
 };
 
+exports.findBySlug = function(slug, callback) {
+    connection.query('SELECT * FROM post WHERE slug=?', [slug], function(err, rows, fields){
+        callback (err, rows);
+    });
+};
+
 

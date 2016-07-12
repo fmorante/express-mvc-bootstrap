@@ -9,7 +9,7 @@ frisby.globalSetup({ // globalSetup is for ALL requests
   }
 });
 
-frisby.create('GET categories - GET single category - POST category - PUT category - DELETE category')
+frisby.create('GET categories - GET single category - POST category - PUT category - DELETE category - GET post from category slug')
     .get(URL + '/categories' + query)
     .expectStatus(200)
     .expectHeaderContains('content-type', 'application/json')
@@ -82,6 +82,36 @@ frisby.create('GET categories - GET single category - POST category - PUT catego
                     .expectJSONTypes({
                         error: Boolean,
                         message: String
+                    })
+                    .expectJSON({
+                        error: false,
+                        message: 'success'
+                    })
+                    .toss();
+
+                // test /categories/:slug/posts
+                frisby.create('GET posts by category slug')
+                    .get(URL + '/categories/todos/posts' + query)
+                    .expectStatus(200)
+                    .expectHeaderContains('content-type', 'application/json')
+                    .expectJSONTypes({
+                        error: Boolean,
+                        message: String,
+                        posts: Array
+                    })
+                    .expectJSON({
+                        error: false,
+                        message: 'success'
+                    })
+                    .toss();
+                frisby.create('GET post from category slug')
+                    .get(URL + '/categories/todos/posts' + query)
+                    .expectStatus(200)
+                    .expectHeaderContains('content-type', 'application/json')
+                    .expectJSONTypes({
+                        error: Boolean,
+                        message: String,
+                        posts: Array
                     })
                     .expectJSON({
                         error: false,
