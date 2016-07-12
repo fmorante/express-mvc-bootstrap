@@ -13,7 +13,9 @@
 		"d488b4b1-0c7f-2743-a10f-cc8740135fea",
 		"70ba3599-9b06-362e-1a69-9e7315ff6954",
 		"e8922b38-5524-a3e4-9075-ff2d2d8e5606",
-		"87d9f315-eb87-34fc-43ec-25a298e4126f"
+		"87d9f315-eb87-34fc-43ec-25a298e4126f",
+		"a47a8a1f-ae5b-8318-a6e4-053ab544ef4a",
+		"6d22d910-522a-df81-8025-933ca62290b8"
 	],
 	"folders": [],
 	"timestamp": 1467637145218,
@@ -21,7 +23,6 @@
 	"remoteLink": "",
 	"public": false,
 	"published": false,
-	"hasRequests": true,
 	"requests": [
 		{
 			"id": "14c4c1e4-f205-96f0-8931-c43e3b0edbfd",
@@ -129,6 +130,27 @@
 			"rawModeData": "{\"slug\": \"postman-update4\", \"name\": \"postman-update4\"}"
 		},
 		{
+			"id": "6d22d910-522a-df81-8025-933ca62290b8",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Zm1vcmFudGU6Zm1vcmFudGU=\n",
+			"url": "http://localhost:3000/categories/todos/posts?limit=10&offset=0",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "259604d3-eb2d-956f-4f8b-5a7b1d02fef5",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/categories/todos/posts?limit=10&offset=0",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1468321925897,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"slug\": \"postman\", \"name\": \"postman\"}"
+		},
+		{
 			"id": "70ba3599-9b06-362e-1a69-9e7315ff6954",
 			"headers": "Content-Type: application/json\nAuthorization: Basic Zm1vcmFudGU6Zm1vcmFudGU=\n",
 			"url": "http://localhost:3000/categories/130",
@@ -190,6 +212,27 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"rawModeData": "{\"name\": \"postman-user\", \"surname\": \"postman-surname\", \"birth\": \"01/15/1977\", \"email\": \"postman@email.com\", \"city\": \"postman-city\", \"country\": 2,\n\"bar\": \"postman-bar\", \"address\": \"postman-address\", \"phone\": \"postman-phone\", \"capacity\": 100, \"message\": \"postman-message\", \"type\": \"contact\", \"postId\": 22}"
+		},
+		{
+			"id": "a47a8a1f-ae5b-8318-a6e4-053ab544ef4a",
+			"headers": "Content-Type: application/json\nAuthorization: Basic Zm1vcmFudGU6Zm1vcmFudGU=\n",
+			"url": "http://localhost:3000/posts/slug/sobrejackdaniels",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "259604d3-eb2d-956f-4f8b-5a7b1d02fef5",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:3000/posts/slug/sobrejackdaniels",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1468321913914,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"slug\": \"postman\", \"name\": \"postman\"}"
 		},
 		{
 			"id": "d488b4b1-0c7f-2743-a10f-cc8740135fea",
