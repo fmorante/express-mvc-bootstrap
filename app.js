@@ -1,12 +1,11 @@
-var express = require("express"),
+var express = require('express'),
     auth = require('http-auth'),
-    config = require("config"),
-    log4js = require("log4js"),
+    config = require('config'),
     bodyParser = require('body-parser'),
-    i18n = require("i18n");
-
-// requires logger module
-var app = express();
+    i18n = require("i18n"),
+    fs = require('fs'),
+    log4js = require('log4js'),
+    app = express();
 
 // authentication parameters
 var basic = auth.basic({
@@ -19,9 +18,10 @@ var basic = auth.basic({
 );
 app.use(auth.connect(basic));
 
-// logger init
+// log4js logger
+fs.existsSync(__dirname + config.get('logger.directory')) || fs.mkdirSync(__dirname + config.get('logger.directory'));
 log4js.loadAppender('file');
-log4js.addAppender(log4js.appenders.file(config.get('logger.file')), 'logger');
+log4js.addAppender(log4js.appenders.file(__dirname + config.get('logger.directory') + '/' + config.get('logger.filename')), 'logger');
 var logger = log4js.getLogger('logger');
 logger.setLevel(config.get('logger.mode'));
 app.use(log4js.connectLogger(logger, { level: config.get('logger.mode')}));

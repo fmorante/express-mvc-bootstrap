@@ -10,7 +10,8 @@
     "password": "fmorante"
   },
   "logger": {
-    "file": "devel.log",
+    "directory": "\\log",
+    "filename": "DEVEL.log",
     "mode": "DEBUG"
   }
 }
