@@ -68,6 +68,16 @@ app.get('/categories/:slug/posts', categories.findPostsBySlug);
 var users = require('./routes/users.js');
 app.post('/users', users.create);
 
-// listen
-app.listen(3000);
-console.log(i18n.__('Server running at port 3000'));
+// db connection & listen
+var pool = require ('./models/db');
+pool.connect(function(err){
+    if (err) {
+        console.log(i18n.__('Unable to connect to MySQL.'));
+        // exit
+    } else {
+        app.listen(3000, function(err) {
+            if (err) app.exit();
+            console.log(i18n.__('Server running at port 3000'));
+        })
+    }
+});
